@@ -79,19 +79,30 @@ In [1]: from myapp.models import Person
 
 In [2]: from myapp.serializers import PersonSerializerNaturalChoiceField, PersonSerializerWithDRFChoiceField                                                       
 
+# Creating 2 person objects
+
 In [3]: bob = Person.objects.create(name='Bob', sex=Person.MALE)                                                                                                   
 
 In [4]: ann = Person.objects.create(name='Ann', sex=Person.FEMALE)                                                                                                 
 
+# Check that DB values really saved as numeric
+
 In [5]: bob.sex, ann.sex                                                                                                                                           
 Out[5]: (1, 2)
 
+# What returns native DRF ChoiceField as a representation to client
 In [6]: PersonSerializerWithDRFChoiceField().to_representation(ann)                                                                                                
 Out[6]: OrderedDict([('name', 'Ann'), ('sex', 2)])
 
+
+# What returns NaturalChoiceField as a representation to client
 In [7]: PersonSerializerNaturalChoiceField().to_representation(ann)                                                                                                
 Out[7]: OrderedDict([('name', 'Ann'), ('sex', 'female')])
 
+
+# Lets compare .to_internal_value() behaviour
+
+# Native DRF ChoiceField conversion external choice value to internal raises exception
 In [8]: new_bob_serializer = PersonSerializerWithDRFChoiceField(data={'name': 'NewBob', 'sex': 'male'})                                                            
 
 In [9]: new_bob_serializer.is_valid(raise_exception=True)                                                                                                          
@@ -110,10 +121,17 @@ ValidationError                           Traceback (most recent call last)
 ValidationError: {'sex': [ErrorDetail(string='"male" is not a valid choice.', code='invalid_choice')]}
 
 
+# Create serializer to check NaturalChoice behaviour from external representation
 In [10]: new_bob_serializer = PersonSerializerNaturalChoiceField(data={'name': 'NewBob', 'sex': 'male'})                                                           
+
 
 In [11]: new_bob_serializer.is_valid(raise_exception=True)                                                                                                         
 Out[11]: True
+
+# Everything is OK and external representation was successfully converted to internal DB representation
+In [12]: new_bob_serializer.validated_data                                                                                                                         
+Out[12]: OrderedDict([('name', 'NewBob'), ('sex', '1')])
+
 
 ```
 
