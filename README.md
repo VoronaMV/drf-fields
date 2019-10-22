@@ -72,7 +72,7 @@ class PersonSerializerWithDRFChoiceField(serializers.ModelSerializer):
         fields = ('name', 'sex')
 ```
 
-Compare representation of this 2 serializer in ipython console:
+##### Compare representation of this 2 serializer in ipython console:
 
 Creating 2 person objects
 ```
