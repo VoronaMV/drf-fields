@@ -73,7 +73,7 @@ class PersonSerializerWithDRFChoiceField(serializers.ModelSerializer):
 ```
 
 Compare representation of this 2 serializer in ipython console:
-```shell script
+```
 
 In [1]: from myapp.models import Person                                                                                                                            
 
