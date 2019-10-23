@@ -15,6 +15,7 @@ can be useful in some cases.
   - [TimestampField](#timestampfield)
     - [Short demo in ipython console](#demo-of-timestampfield-in-ipython-console)
   - [TimestampFromDateField](#timestampfromdatefield)
+  - [RecursiveField](#recursivefield)
   
 ## Compatibility
 All fields were tested and applied in projects with:
