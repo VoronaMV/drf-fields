@@ -171,7 +171,7 @@ looks like:
 }
 ```
 And `Python` skill already exists in DB but `Java` and `C#` don't and
-we want it to be created without overriding `.create()` of `PersonSerializer`.
+we want it to be created without overloading `.create()` of `PersonSerializer`.
 
 So we have `models.py`
 ```python
