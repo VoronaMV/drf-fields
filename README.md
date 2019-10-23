@@ -138,3 +138,64 @@ Out[12]: OrderedDict([('name', 'NewBob'), ('sex', '1')])
 
 So, as you can see native `ChoiceField` doesn't handle choices as it does django admin forms
 by default, but `NaturalChoice` field can handle it.
+
+### GetOrCreateSlugRelatedField
+> `drf_fields.fields.GetOrCreateSlugRelatedField`
+
+A SlugRelatedField that make possible either to create relations
+between objects that has already exists and which should be created.
+
+Native DRF `SlugRelatedField` allow you to create new relation
+between object has to be created and existed ones.
+But sometime we want to created some object that has nested
+field that represents one-to-one or one-to-many DB relationship 
+to existed objects and new ones.
+
+To be more clear imagine that we have Person and Skills that person 
+can have. So it is represented by many-to-many relation.
+So not to work with nested functionality it is easy to handle with 
+`SlugRelatedField`, but when we retrieve request to create user it can 
+looks like:
+```json
+{
+    "name": "Bob",
+     "skills": ["Python", "Java", "C#"]
+}
+```
+And `Python` skill already exists in DB but `Java` and `C#` don't and
+we want it to be created without overriding `.create()` of `PersonSerializer`.
+
+So we have `models.py`
+```python
+from django.db import models
+
+
+class Skill(models.Model):
+    name = models.CharField(max_length=200)
+
+
+class Person(models.Model):
+
+    name = models.CharField(max_length=255)
+    skills = models.ManyToManyField(Skill, on_delete=models.CASCADE)
+```
+
+`serializers.py` have next content:
+```python
+from rest_framework import serializers
+from drf_fields.fields import GetOrCreateSlugRelatedField
+from myapp.models import Person
+
+
+class PersonSerializer(serializers.ModelSerializer):
+    skills = GetOrCreateSlugRelatedField(slug_field='name', get_or_craete=True)
+
+    class Meta:
+        model = Person
+        fields = ('name', 'skills')
+```
+
+#### Demo of GetOrCreateSlugRelatedField in ipython console:
+```
+
+```
