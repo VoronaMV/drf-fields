@@ -23,6 +23,7 @@ All fields were tested and applied in projects with:
 This is short documentation about each field.
 
 ### NaturalChoiceField
+> `drf_fields.fields.NaturalChoiceField`
 
 This field extends `rest_framework.serializers.ChoiceField`.
 The native DRF ChoiceField doesn't return real model or field choices
@@ -51,7 +52,7 @@ class Person(models.Model):
 And `serializers.py`
 ```python
 from rest_framework import serializers
-from drf_fields import NaturalChoiceField
+from drf_fields.fields import NaturalChoiceField
 from myapp.models import Person
 
 
