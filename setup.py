@@ -7,7 +7,7 @@ setup(
     name='drf_fields',
     url='https://github.com/VoronaMV/drf-fields',
     version=drf_fields.__version__,
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests']),
     include_package_data=True,
     license='MIT',
     description='Django REST Framework extra fields.',
@@ -16,9 +16,7 @@ setup(
     author='mvorona',
     author_email='mvl.vorona@gmail.com',
     keywords=['drf fields', 'fields', 'serializer fields'],
-    install_requires=[
-        'djangorestframework==3.10.3',
-    ],
+    install_requires=[],
     classifiers=[
         'Development Status :: 1 - Beta',
         'Environment :: Web Environment',
