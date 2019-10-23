@@ -9,6 +9,10 @@ can be useful in some cases.
 - [Installation](#installation)
 - [Fields description](#fields-description)
   - [NaturalChoiceField](#fields-description)
+    - [Compare with native DRF ChoiceField](#compare-representation-of-this-2-serializer-in-ipython-console)
+  - [GetOrCreateSlugRelatedField](#getorcreateslugrelatedfield)
+    - [Short demo in ipython console](#demo-of-getorcreateslugrelatedfield-in-ipython-console)
+
 ## Compatibility
 All fields were tested and applied in projects with:
   - `python>=3.6`
@@ -73,7 +77,7 @@ class PersonSerializerWithDRFChoiceField(serializers.ModelSerializer):
         fields = ('name', 'sex')
 ```
 
-#### Compare representation of this 2 serializer in ipython console:
+#### Compare representation of this 2 serializer in ipython console
 
 Creating 2 person objects
 ```
@@ -195,7 +199,7 @@ class PersonSerializer(serializers.ModelSerializer):
         fields = ('name', 'skills')
 ```
 
-#### Demo of GetOrCreateSlugRelatedField in ipython console:
+#### Demo of GetOrCreateSlugRelatedField in ipython console
 ```
 
 ```
