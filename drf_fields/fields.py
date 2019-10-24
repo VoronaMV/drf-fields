@@ -70,9 +70,6 @@ class TimestampField(serializers.Field):
         :param value: the timestamp value
         :return: a django DateTime value
         """
-        request = self.context.get('request')
-        if not request:
-            return False
         converted = datetime.datetime.fromtimestamp(float('%s' % value))
         return converted
 
