@@ -16,6 +16,7 @@ can be useful in some cases.
     - [Short demo in ipython console](#demo-of-timestampfield-in-ipython-console)
   - [TimestampFromDateField](#timestampfromdatefield)
   - [RecursiveField](#recursivefield)
+- [Tests](#tests)
   
 ## Compatibility
 All fields were tested and applied in projects with:
@@ -250,3 +251,9 @@ relation in table. When you have this case - you may want to represent
 this structure as a tree at the client side (for example: organization structure 
 of company).
 
+## Tests
+All testing are provided using `pytest` library.
+To run tests with verbose output run:
+```shell script
+pytest -v
+```
