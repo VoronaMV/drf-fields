@@ -1,0 +1,4 @@
+# Base project requirements
+
+Django>=2.2.0
+djangorestframework>=3.9
