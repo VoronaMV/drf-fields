@@ -156,7 +156,6 @@ class NaturalChoiceField(serializers.ChoiceField):
             return value
         return self.choice_strings_to_values.get(value, value)
 
-
 class GetOrCreateSlugRelatedField(serializers.SlugRelatedField):
     """
     A SlugRelatedField that make possible either to create relations
