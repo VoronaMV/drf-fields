@@ -2,5 +2,5 @@
 # just REST framework and Django, but for the purposes of development
 # and testing there are a number of packages that are useful to install.
 
-# May be there are some additional requirements that can be helpful
-# with testing and docs will appear soon
+-r requirements/base.txt
+-r requirements/test.txt

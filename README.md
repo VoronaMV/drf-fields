@@ -16,6 +16,7 @@ can be useful in some cases.
     - [Short demo in ipython console](#demo-of-timestampfield-in-ipython-console)
   - [TimestampFromDateField](#timestampfromdatefield)
   - [RecursiveField](#recursivefield)
+- [Tests](#tests)
   
 ## Compatibility
 All fields were tested and applied in projects with:
@@ -31,7 +32,9 @@ All fields were tested and applied in projects with:
 This is short documentation about each field.
 
 ### NaturalChoiceField
-> `drf_fields.fields.NaturalChoiceField`
+
+> `drf_fields.fields NaturalChoiceField`
+
 
 This field extends `rest_framework.serializers.ChoiceField`.
 The native DRF ChoiceField doesn't return real model or field choices
@@ -148,7 +151,7 @@ So, as you can see native `ChoiceField` doesn't handle choices as it does django
 by default, but `NaturalChoice` field can handle it.
 
 ### GetOrCreateSlugRelatedField
-> `drf_fields.fields.GetOrCreateSlugRelatedField`
+> `drf_fields.fields GetOrCreateSlugRelatedField`
 
 A SlugRelatedField that make possible either to create relations
 between objects that has already exists and which should be created.
@@ -209,7 +212,7 @@ class PersonSerializer(serializers.ModelSerializer):
 ```
 
 ### TimestampField
-> `drf_fields.fields.TimestampField`
+> `drf_fields.fields TimestampField`
 
 Field that allow simply works with timestamps in seconds with client side.
 Originally you only can configure datetimes representation, but sometimes 
@@ -235,12 +238,12 @@ class PersonSerializer(serializers.Serializer):
 ```
 
 ### TimestampFromDateField
-> `drf_fields.fields.TimestampFromDateField`
+> `drf_fields.fields TimestampFromDateField`
 
 The same field as `TimestampField` but for date representation.
 
 ### RecursiveField
-> `drf_fields.fields.RecursiveField`
+> `drf_fields.fields RecursiveField`
 
 Field for recursive tree scaling with set depth.
 
@@ -250,3 +253,9 @@ relation in table. When you have this case - you may want to represent
 this structure as a tree at the client side (for example: organization structure 
 of company).
 
+## Tests
+All testing are provided using `pytest` library.
+To run tests with verbose output run:
+```shell script
+pytest -v
+```
