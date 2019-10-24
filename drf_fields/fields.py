@@ -151,8 +151,13 @@ class NaturalChoiceField(serializers.ChoiceField):
         # integer or string input, but still get the correct datatype out.
         super()._set_choices(choices)
         self.choice_strings_to_values = {
-            six.text_type(key): val for key, val in self.choices.items()
+            key: val for key, val in self.choices.items()
         }
+
+    def to_representation(self, value):
+        if value in ('', None):
+            return value
+        return self.choice_strings_to_values.get(value, value)
 
 
 class GetOrCreateSlugRelatedField(serializers.SlugRelatedField):
